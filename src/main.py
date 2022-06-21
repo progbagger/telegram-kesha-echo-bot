@@ -1,6 +1,6 @@
 from telebot.async_telebot import AsyncTeleBot
 from telebot.types import Message
-from os import environ
+from os import environ, path
 from asyncio import run
 
 bot = AsyncTeleBot(environ.get("TOKEN"), parse_mode=None)
@@ -33,7 +33,7 @@ all_content_types = [
 
 @bot.message_handler(commands=["start", "help"])
 async def start(message: Message):
-    sticker = open("../assets/hi_sticker.webp", "rb")
+    sticker = open(path.join("assets") + "hi_sticker.webp", "rb")
     await bot.send_sticker(message.chat.id, sticker)
     await bot.send_message(
         message.chat.id,
