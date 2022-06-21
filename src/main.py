@@ -74,7 +74,7 @@ async def echo_audio(message: Message):
 
 @bot.message_handler(content_types=["pinned_message"])
 async def echo_pinned(message: Message):
-    await bot.send_message(message.chat.id, "*Кар-р-р!*", parse_mode="Markdown")
+    await bot.send_message(message.chat.id, "*Закр-р-реплено!*", parse_mode="Markdown")
 
 
 @bot.message_handler(content_types=["new_chat_members"])
