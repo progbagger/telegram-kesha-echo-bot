@@ -1,1 +1,1 @@
-worker: pytnon src/main.py
+worker: python src/main.py
