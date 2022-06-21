@@ -46,17 +46,49 @@ async def start(message: Message):
 
 @bot.message_handler(content_types=["text"])
 async def echo_text(message: Message):
-    await bot.send_message(message.chat.id, message.text)
+    await bot.send_message(
+        message.chat.id, "_" + message.text.strip("_*") + "_", parse_mode="Markdown"
+    )
 
 
 @bot.message_handler(content_types=["sticker"])
 async def echo_sticker(message: Message):
-    await bot.send_sticker(message.chat.id, message.sticker.file_id)
+    await bot.send_message(
+        message.chat.id, "*Кр-р-рутой стикер-р!*", parse_mode="Markdown"
+    )
 
 
-@bot.message_handler(content_types=["animation"])
-async def echo_gif(message: Message):
-    await bot.send_animation(message.chat.id, message.animation.file_id)
+@bot.message_handler(content_types=["animation", "photo", "video", "video_note"])
+async def echo_video(message: Message):
+    await bot.send_message(
+        message.chat.id, "*Выглядит кр-р-руто!*", parse_mode="Markdown"
+    )
+
+
+@bot.message_handler(content_types=["audio", "voice"])
+async def echo_audio(message: Message):
+    await bot.send_message(
+        message.chat.id, "*Звучит невер-р-роятно!*", parse_mode="Markdown"
+    )
+
+
+@bot.message_handler(content_types=["pinned_message"])
+async def echo_pinned(message: Message):
+    await bot.send_message(message.chat.id, "*Закр-р-реплено!*", parse_mode="Markdown")
+
+
+@bot.message_handler(content_types=["new_chat_members"])
+async def echo_new_chat_members(message: Message):
+    reply_text = "*Пр-р-ривет"
+    if len(message.new_chat_members) == 1:
+        reply_text += f", _{message.new_chat_members[0].first_name}_!*"
+    else:
+        reply_text += " _всем_!*"
+    await bot.send_message(
+        message.chat.id,
+        reply_text,
+        parse_mode="Markdown",
+    )
 
 
 @bot.message_handler(content_types=all_content_types)
