@@ -1,0 +1,1 @@
+worker: pytnon src/main.py
