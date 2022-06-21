@@ -5,6 +5,8 @@ from asyncio import run
 
 bot = AsyncTeleBot(environ.get("TOKEN"), parse_mode=None)
 
+sticker = open(path.join("assets/") + "hi_sticker.webp", "rb")
+
 all_content_types = [
     "text",
     "photo",
@@ -33,7 +35,6 @@ all_content_types = [
 
 @bot.message_handler(commands=["start", "help"])
 async def start(message: Message):
-    sticker = open(path.join("assets/") + "hi_sticker.webp", "rb")
     await bot.send_sticker(message.chat.id, sticker)
     await bot.send_message(
         message.chat.id,
@@ -63,4 +64,4 @@ async def echo_all(message: Message):
     await bot.send_message(message.chat.id, "*Кар-р-р!*", parse_mode="Markdown")
 
 
-run(bot.infinity_polling())
+run(bot.infinity_polling(allowed_updates=["message"]))
