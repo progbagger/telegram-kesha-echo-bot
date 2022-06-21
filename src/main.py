@@ -33,9 +33,11 @@ all_content_types = [
 
 @bot.message_handler(commands=["start", "help"])
 async def start(message: Message):
+    sticker = open("../assets/hi_sticker.webp", "rb")
+    await bot.send_sticker(message.chat.id, sticker)
     await bot.send_message(
         message.chat.id,
-        "*Кар-р!* *Карр-р-р!*\n\n"
+        "*Пр-р-ривет!*\n\n"
         + "Я - попугай *Кеша*. Я *повторяю* за *тобой* *все* сообщения! *Кар-р!*",
         parse_mode="Markdown",
     )
