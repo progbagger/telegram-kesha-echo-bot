@@ -33,7 +33,7 @@ all_content_types = [
 
 @bot.message_handler(commands=["start", "help"])
 async def start(message: Message):
-    sticker = open(path.join("assets") + "hi_sticker.webp", "rb")
+    sticker = open(path.join("assets/") + "hi_sticker.webp", "rb")
     await bot.send_sticker(message.chat.id, sticker)
     await bot.send_message(
         message.chat.id,
