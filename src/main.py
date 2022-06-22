@@ -5,7 +5,7 @@ from asyncio import run
 
 bot = AsyncTeleBot(environ.get("TOKEN"), parse_mode=None)
 
-sticker = open(path.join("assets/") + "hi_sticker.webp", "rb")
+sticker = open(path.join("assets/", "hi_sticker.webp"), "rb")
 
 all_content_types = [
     "text",
