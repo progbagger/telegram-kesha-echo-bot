@@ -53,7 +53,7 @@ async def echo_text(message: Message):
 
 @bot.message_handler(content_types=["sticker"])
 async def echo_sticker(message: Message):
-    await bot.send_sticker(message.chat.id, message.sticker)
+    await bot.send_sticker(message.chat.id, message.sticker.file_id)
 
 
 @bot.message_handler(content_types=["animation", "photo", "video", "video_note"])
